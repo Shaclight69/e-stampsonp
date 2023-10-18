@@ -39,8 +39,8 @@ exports.SubsPayment = catchAsyncErrors(async (req, res, next) => {
           quantity: 1,
         },
       ],
-      success_url: "http://localhost:3000/subscriptionssuccess",
-      cancel_url: "http://localhost:3000/subscriptions",
+      success_url: `${process.env.FRONTEND_URL}/subscriptionssuccess`,
+      cancel_url: `${process.env.FRONTEND_URL}/subscriptions`,
     },
     {
       apiKey: process.env.STRIPE_SECRET_KEY,

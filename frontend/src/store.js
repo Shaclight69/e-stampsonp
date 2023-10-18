@@ -73,6 +73,11 @@ let initialState = {
       ? JSON.parse(localStorage.getItem("favouriteItems"))
       : [],
   },
+  user: {
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : {},
+  },
 };
 
 const middleware = [thunk];

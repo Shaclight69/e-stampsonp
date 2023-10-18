@@ -11,6 +11,8 @@ import "./Subscribe.css";
 import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 import MetaData from "../layouts/MetaData";
 
+import { FRONTEND_URI } from "../../App";
+
 const CardsContainer = styled.div`
   display: flex;
   height: 75vh;
@@ -60,7 +62,7 @@ const Subscribe = () => {
     "Block Sheets":
       "The subscription allows you to receive per year the quantity of our Block Sheets.",
   };
-  const PDF_FORM_URL = "http://localhost:3000/subsform_pdf.pdf";
+  const PDF_FORM_URL = `${FRONTEND_URI}/subsform_pdf.pdf`;
 
   const PDFHandler = (url) => {
     const filename = url.split("/").pop();

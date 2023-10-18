@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 
+import { FRONTEND_URI } from "../../App";
+
 const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
 

@@ -3,11 +3,12 @@ import {
   REMOVE_FROM_WISHLIST,
 } from "../constants/wishlistConstants";
 import axios from "axios";
+import { FRONTEND_URI } from "../App";
 
 // Add to Wishlist
 export const addItemsToWishlist =
   (id, quantity) => async (dispatch, getState) => {
-    const { data } = await axios.get(`/api/v3/product/${id}`);
+    const { data } = await axios.get(`${FRONTEND_URI}/api/v3/product/${id}`);
 
     dispatch({
       type: ADD_TO_WISHLIST,

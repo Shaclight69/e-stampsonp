@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
 import "./SbsButton.scss";
+import { Link } from "react-router-dom";
+// import { FRONTEND_URI } from "../../App";
 
+// const SUBS_URL = `${FRONTEND_URI}/subscriptions`;
 const SubsButton = () => {
   return (
     <Fragment>
-      <a href="http://localhost:3000/subscriptions">
+      <Link to="/products">
         <div class="buttons">
           <button class="blob-btn">
             Subscribe Now
@@ -19,7 +22,7 @@ const SubsButton = () => {
           </button>
           <br />
         </div>
-      </a>
+      </Link>
 
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>

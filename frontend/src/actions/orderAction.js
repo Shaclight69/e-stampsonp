@@ -22,6 +22,8 @@ import {
 
 import axios from "axios";
 
+import { FRONTEND_URI } from "../App";
+
 // Create Order
 export const createOrder = (order) => async (dispatch) => {
   try {

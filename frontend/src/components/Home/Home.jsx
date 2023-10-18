@@ -14,6 +14,7 @@ import SubsCard from "./SubsCard";
 import Wrapper from "./Wrapper";
 import Navbar from "../layouts/Header/Navbar";
 import MetaData from "../layouts/MetaData";
+import dotenv from "dotenv";
 
 const Title = styled.div`
   margin-top: 20px;
@@ -40,6 +41,8 @@ const ProductContainer = styled.div`
 `;
 
 const Home = () => {
+  dotenv.config({ path: "/frontend/src/config.env" });
+  console.log(process.env.FRONTEND_URI);
   const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector((state) => state.products);

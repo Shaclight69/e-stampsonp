@@ -13,7 +13,7 @@ import LoginSignUp from "./components/User/LoginSignUp";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 import UserOptions from "./components/layouts/Header/UserOptions";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Profile from "./components/User/Profile";
 import ProtectedRoute from "./components/Route/ProtectedRoute";
 import UpdateProfile from "./components/User/UpdateProfile";
@@ -81,13 +81,19 @@ const theme = createMuiTheme({
   },
 });
 
+export const FRONTEND_URI = process.env.REACT_APP_BASE_URL;
+
 function App() {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
+  const { isAuthenticated, user, userInfo } = useSelector(
+    (state) => state.user
+  );
 
   const [stripeApiKey, setStripeApiKey] = useState("");
 
+  const dispatch = useDispatch();
+
   async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v3/stripeapikey");
+    const { data } = await axios.get(`${FRONTEND_URI}/api/v3/stripeapikey`);
 
     setStripeApiKey(data.stripeApiKey);
   }
@@ -98,7 +104,7 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-    store.dispatch(loadUser());
+    dispatch(loadUser());
 
     getStripeApiKey();
   }, []);
@@ -112,7 +118,7 @@ function App() {
             <Navbar />
           </RenderNavbar>
 
-          {isAuthenticated && <UserOptions user={user} />}
+          {isAuthenticated && userInfo && <UserOptions user={userInfo} />}
           {stripeApiKey && (
             <Elements stripe={loadStripe(stripeApiKey)}>
               <ProtectedRoute

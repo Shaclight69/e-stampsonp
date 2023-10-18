@@ -21,6 +21,8 @@ import {
   CLEAR_ERRORS,
 } from "../constants/eventConstants";
 
+import { FRONTEND_URI } from "../App";
+
 // Get All Events
 export const getEvent =
   (keyword = "", currentPage = 1, category) =>
@@ -76,7 +78,7 @@ export const createEvent = (eventData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/api/v3/admin/event/new`,
+      "/api/v3/admin/event/new",
       eventData,
       config
     );

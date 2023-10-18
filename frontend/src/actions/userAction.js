@@ -38,20 +38,27 @@ import {
 } from "../constants/userConstants";
 import axios from "axios";
 
+import { FRONTEND_URI } from "../App";
+
 // Login
-export const login = (email, password) => async (dispatch) => {
+export const login = (email, password) => async (dispatch, getState) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      `/api/v3/login`,
+      `${FRONTEND_URI}/api/v3/login`,
       { email, password },
       config
     );
 
-    dispatch({ type: LOGIN_SUCCESS, payload: data.user });
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: data.user,
+      payload: data.userInfo,
+    });
+    localStorage.setItem("userInfo", JSON.stringify(getState().user.user));
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
   }
@@ -64,7 +71,11 @@ export const register = (userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
-    const { data } = await axios.post(`/api/v3/register`, userData, config);
+    const { data } = await axios.post(
+      `${FRONTEND_URI}/api/v3/register`,
+      userData,
+      config
+    );
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -80,9 +91,15 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(`/api/v3/me`);
+    const { data } = await axios.get(`${FRONTEND_URI}/api/v3/me`);
 
-    dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
+    //sreduxtest// userInfo = JSON.parse(localStorage.getItem("userInfo")); TODO
+
+    dispatch({
+      type: LOAD_USER_SUCCESS,
+      payload: data.user,
+      payload: data.userInfo,
+    });
   } catch (error) {
     dispatch({ type: LOAD_USER_FAIL, payload: error.response.data.message });
   }
@@ -91,9 +108,10 @@ export const loadUser = () => async (dispatch) => {
 // Logout User
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(`/api/v3/logout`);
+    await axios.get(`${FRONTEND_URI}/api/v3/logout`);
 
     dispatch({ type: LOGOUT_SUCCESS });
+    localStorage.removeItem("userInfo");
   } catch (error) {
     dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
   }
@@ -106,7 +124,7 @@ export const updateProfile = (userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
-    const { data } = await axios.put(`/api/v3/me/update`, userData, config);
+    const { data } = await axios.put("/api/v3/me/update", userData, config);
 
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success });
   } catch (error) {
@@ -125,7 +143,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      `/api/v3/password/update`,
+      "/api/v3/password/update",
       passwords,
       config
     );
@@ -146,7 +164,7 @@ export const forgotPassword = (email) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.post(`/api/v3/password/forgot`, email, config);
+    const { data } = await axios.post("/api/v3/password/forgot", email, config);
 
     dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
   } catch (error) {
@@ -183,7 +201,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
 export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
-    const { data } = await axios.get(`/api/v3/admin/users`);
+    const { data } = await axios.get("/api/v3/admin/users");
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
   } catch (error) {
@@ -197,7 +215,11 @@ export const getUserDetails = (id) => async (dispatch) => {
     dispatch({ type: USER_DETAILS_REQUEST });
     const { data } = await axios.get(`/api/v3/admin/user/${id}`);
 
-    dispatch({ type: USER_DETAILS_SUCCESS, payload: data.user });
+    dispatch({
+      type: USER_DETAILS_SUCCESS,
+      payload: data.user,
+      payload: data.userInfo,
+    });
   } catch (error) {
     dispatch({ type: USER_DETAILS_FAIL, payload: error.response.data.message });
   }
