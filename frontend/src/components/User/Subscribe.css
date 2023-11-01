@@ -1,0 +1,151 @@
+.pdfBtn {
+  border: none;
+  background-color: #00308f;
+  color: white;
+  font: 300 0.9vmax "Roboto";
+  width: 178px;
+  padding: 0.8vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  display: grid;
+  margin: auto;
+  margin-top: 12px;
+  text-align: center;
+  justify-content: space-evenly;
+}
+.pdfBtn:hover {
+  background-color: rgb(255, 191, 0);
+}
+.productCard {
+  width: 14vmax;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  margin: 2vmax;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+}
+
+.productCard > img {
+  width: 14vmax;
+}
+
+.productCard > div {
+  margin: 0.5vmax;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.productCardSpan {
+  margin: 0.5vmax;
+  font: 300 0.7vmax "Roboto";
+}
+
+.productCard > p {
+  font-family: "Roboto";
+  font-size: 1.2vmax;
+  margin: 1vmax 0.5vmax;
+  margin-bottom: 0;
+}
+
+.productCard > span {
+  margin: 0.5vmax;
+  color: #00308f;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1vmax;
+}
+
+.productCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+
+  transform: translateY(-1vmax);
+}
+
+@media screen and (max-width: 600px) {
+  .productCard > p {
+    font-size: 1.7vmax;
+  }
+
+  .productCard > div {
+    margin: 0vmax;
+    display: block;
+  }
+
+  .productCard > span {
+    font-size: 1.5vmax;
+  }
+
+  .productCard > div > span {
+    margin: 0 0.5vmax;
+    font: 300 1vmax "Roboto";
+  }
+
+  #pdfBtn {
+    font: 300 1.9vmax "Roboto";
+    padding: 1.8vmax;
+  }
+}
+
+.card-container {
+  width: 320px;
+  height: 450px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px -5px;
+  margin: 20px;
+  transition: 0.3s;
+  animation: ease-in;
+}
+
+.card-container:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px 0px;
+}
+
+.image-container img {
+  overflow: hidden;
+  height: 200px;
+  margin: auto;
+  display: block;
+}
+
+.card-content {
+  margin: 1rem;
+  margin-top: 0.5rem;
+}
+
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  display: block;
+  margin: 10px 10px 0 0;
+  padding: 5px 10px;
+}
+
+.card-content span {
+  font-weight: bold;
+  color: #00308f;
+  text-align: center;
+  font-size: 12px;
+  display: block;
+  margin: 10px 10px 0 0;
+  padding: 5px 10px;
+}
+
+.card-content p {
+  font-style: italic;
+}
+
+h6 {
+  color: #36454f;
+}

@@ -1,0 +1,94 @@
+.productListContainer {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+  border-left: 5px solid rgb(230, 227, 227);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.productListHeading {
+  width: 100%;
+  font-size: 26px;
+  color: #0c2b69;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid #0c2b69;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 180px;
+  text-align: center;
+  background-color: #0c2b69;
+}
+
+.link:hover {
+  background-color: white;
+  border: 1px solid gray;
+  color: #0c2b69;
+}
+
+.cellWithImg {
+  display: flex;
+  align-items: center;
+}
+.cellImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.margin {
+  margin: 10px;
+}
+
+.productListTable {
+  background-color: white;
+  border: none !important;
+  margin-bottom: 10px;
+  /* width: 100px; */
+}
+
+.productListTable div {
+  font: 300 1vmax "Roboto";
+  color: rgba(0, 0, 0, 0.678);
+  border: none !important;
+}
+
+.productListTable a,
+.productListTable button {
+  color: rgba(0, 0, 0, 0.527);
+  transition: all 0.5s;
+}
+
+.productListTable a:hover {
+  color: #00308f;
+}
+
+.productListTable button:hover {
+  color: rgb(236, 30, 30);
+}
+
+.MuiDataGrid-columnHeader div {
+  color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 600px) {
+  .productListTable div {
+    font: 300 4vw "Roboto";
+  }
+}
