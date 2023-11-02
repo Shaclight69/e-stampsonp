@@ -4,7 +4,7 @@ export class ChatBot extends Component {
   componentDidMount() {
     (function (d, m) {
       var kommunicateSettings = {
-        appId: "488f40a1ead7d147f737685935db1813",
+        appId: "3a31cc74f6fbe6a36e51e314cea2c88b",
         popupWidget: true,
         automaticChatOpenOnNavigation: true,
       };
@@ -17,7 +17,6 @@ export class ChatBot extends Component {
       window.kommunicate = m;
       m._globals = kommunicateSettings;
     })(document, window.kommunicate || {});
-    /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
   }
   render() {
     return <div></div>;
