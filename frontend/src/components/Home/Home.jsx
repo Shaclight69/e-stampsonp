@@ -65,7 +65,7 @@ const Home = () => {
 
           <Slider />
 
-          <SubsCard />
+           {/* <SubsCard /> */}
           <Title>
             <Text>Latest Emissions</Text>
           </Title>
